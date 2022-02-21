@@ -1,0 +1,13 @@
+pip3.7 install virtualenv
+python -m virtualenv MyEnv
+.\MyEnv\Scripts\activate
+pip install django
+django-admin startproject mysite
+cd mysite
+python manage.py startapp fyp
+python manage.py createsuperuser
+python manage.py makemigrations
+python manage.py migrate
+
+
+fdfa alt+x
