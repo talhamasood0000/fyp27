@@ -92,17 +92,14 @@ https://templatemo.com/tm-538-digital-trend
                     <!-- Follow https://templatemo.com/contact page to setup your own contact form -->
                     
                       <form action="#" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
-                        <div class="row">
+                         {% csrf_token %}
+                         <div class="row">
                           <div class="col-12">
-                            <input type="text" class="form-control" name="name" placeholder="Name">
+                            {{form.email}}
                           </div>
 
                           <div class="col-12">
-                            <input type="email" class="form-control" name="email" placeholder="Email">
-                          </div>
-
-                          <div class="col-12">
-                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            {{form.password}}
                           </div>
 
                           <div class="col-lg-5 mx-auto col-7">

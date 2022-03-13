@@ -92,23 +92,30 @@ https://templatemo.com/tm-538-digital-trend
                     <!-- Follow https://templatemo.com/contact page to setup your own contact form -->
                     
                       <form action="#" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+                         {% csrf_token %}
                         <div class="row">
                           <div class="col-12">
-                            <input type="text" class="form-control" name="name" placeholder="Name">
+                            {{form.email}}
                           </div>
 
                           <div class="col-12">
-                            <input type="email" class="form-control" name="email" placeholder="Email">
+                              {{form.username}}
                           </div>
-
+                          
                           <div class="col-12">
-                            <input type="password" class="form-control" name="password" placeholder="Password">
+                              {{form.phonenumber}}
+                          </div>
+                          
+                          <div class="col-12">
+                              {{form.password1}}
                             <small>*Choose a strong password</small>
                           </div>
+                          
                           <div class="col-12">
-                            <input type="password" class="form-control" name="password" placeholder="Confirm Password">
-                            <center>Already have an account click here to <a href="login.html"><b>login</b></a>.</center>
+                              {{form.password2}}
+                            <center>Already have an account click here to <a href="{% url 'login' %}"><b>login</b></a>.</center>
                           </div>
+                          
                           <div class="col-lg-5 mx-auto col-7">
                             <button type="submit" class="form-control" id="submit-button" name="submit">Done!</button>
                           </div>
