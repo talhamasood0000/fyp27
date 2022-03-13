@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,7 @@ https://templatemo.com/tm-538-digital-trend
      <!-- MENU BAR -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{% url 'index' %}">
                <i class="fal fa-eye-evil"></i>
                Zavirite
             </a>
@@ -50,7 +51,7 @@ https://templatemo.com/tm-538-digital-trend
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                         <a href="#bg-animation" class="nav-link smoothScroll">Home</a>
+                         <a href="{% url 'index' %}" class="nav-link smoothScroll">Home</a>
                      </li>
                     <li class="nav-item">
                         <a href="index.html#about" class="nav-link smoothScroll">About us</a>
@@ -59,7 +60,7 @@ https://templatemo.com/tm-538-digital-trend
                         <a href="#features" class="nav-link smoothScroll">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="team.html" class="nav-link">Our Team</a>
+                        <a href="{% url 'team' %}" class="nav-link">Our Team</a>
                     </li>
                     <li class="nav-item">
                          <a href="#contact" class="nav-link">Contact</a>
@@ -68,7 +69,7 @@ https://templatemo.com/tm-538-digital-trend
                          <a href="demo.html" class="nav-link">Get a demo</a>
                      </li>
                     <li class="nav-item">
-                        <a href="signup.html" class="nav-link contact">Sign Up/Login</a>
+                        <a href="{% url 'signup' %}" class="nav-link contact">Sign Up/Login</a>
                     </li>
                 </ul>
             </div>
@@ -440,17 +441,18 @@ https://templatemo.com/tm-538-digital-trend
  <!-- SCRIPTS -->
  <script src="{% static 'js/jquery.min.js' %}"></script>
  <script src="{% static 'js/bootstrap.min.js' %}"></script>
- <script src="{% static 'js/aos.js"></script>
+ <script src="{% static 'js/aos.js' %}"></script>
  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
  <script src="{% static 'js/smoothscroll.js' %}"></script>
- <script src="{% static 'js/custom.js"></script>
+ <script src="{% static 'js/custom.js' %}"></script>
  <script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
  <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 
- <script src="{% static 'js/p5.min.js"></script>
+ <script src="{% static 'js/p5.min.js' %}"></script>
  <script src="{% static 'js/vanta.topology.min.js' %}"></script>
  <script src="{% static 'js/team.js' %}"></script>
  <script src="{% static 'js/newsletter.js' %}"></script>
+ <script src="{% static 'js/zenith.js' %}"></script>
  <script>
  VANTA.TOPOLOGY({
  el: "#bg-animation",
@@ -463,7 +465,7 @@ https://templatemo.com/tm-538-digital-trend
  scaleMobile: 1.00
  })
  </script>
- <script src="{% static 'js/zenith.js' %}"></script>
+
  <script>
       $('#default').zenith({
            layout:'default',

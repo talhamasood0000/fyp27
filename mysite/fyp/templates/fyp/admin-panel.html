@@ -35,45 +35,45 @@ https://templatemo.com/tm-538-digital-trend
 <body>
 
      <!-- MENU BAR -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-               <i class="fal fa-eye-evil"></i>
-               Zavirite
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                         <a href="#bg-animation" class="nav-link smoothScroll">Home</a>
-                     </li>
-                    <li class="nav-item">
-                        <a href="index.html#about" class="nav-link smoothScroll">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#features" class="nav-link smoothScroll">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="team.html" class="nav-link">Our Team</a>
-                    </li>
-                    <li class="nav-item">
-                         <a href="#contact" class="nav-link">Contact</a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="demo.html" class="nav-link">Get a demo</a>
-                     </li>
-                    <li class="nav-item">
-                        <a href="signup.html" class="nav-link contact">Sign Up/Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+     <nav class="navbar navbar-expand-lg">
+          <div class="container">
+              <a class="navbar-brand" href="{% url 'index' %}">
+                 <i class="fal fa-eye-evil"></i>
+                 Zavirite
+              </a>
+  
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+  
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                           <a href="{% url 'index' %}" class="nav-link smoothScroll">Home</a>
+                       </li>
+                      <li class="nav-item">
+                          <a href="index.html#about" class="nav-link smoothScroll">About us</a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="#features" class="nav-link smoothScroll">Services</a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{% url 'team' %}" class="nav-link">Our Team</a>
+                      </li>
+                      <li class="nav-item">
+                           <a href="#contact" class="nav-link">Contact</a>
+                       </li>
+                       <li class="nav-item">
+                           <a href="demo.html" class="nav-link">Get a demo</a>
+                       </li>
+                      <li class="nav-item">
+                          <a href="{% url 'signup' %}" class="nav-link contact">Sign Up/Login</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
 <header id="bg-animation">
      <section class="hero hero-bg d-flex justify-content-center align-items-center">
           <div class="container">
@@ -181,14 +181,14 @@ https://templatemo.com/tm-538-digital-trend
  <!-- SCRIPTS -->
  <script src="{% static 'js/jquery.min.js' %}"></script>
  <script src="{% static 'js/bootstrap.min.js' %}"></script>
- <script src="{% static 'js/aos.js"></script>
+ <script src="{% static 'js/aos.js' %}"></script>
  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
  <script src="{% static 'js/smoothscroll.js' %}"></script>
- <script src="{% static 'js/custom.js"></script>
+ <script src="{% static 'js/custom.js' %}"></script>
  <script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
  <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 
- <script src="{% static 'js/p5.min.js"></script>
+ <script src="{% static 'js/p5.min.js' %}"></script>
  <script src="{% static 'js/vanta.topology.min.js' %}"></script>
  <script src="{% static 'js/team.js' %}"></script>
  <script src="{% static 'js/newsletter.js' %}"></script>
