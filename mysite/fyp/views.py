@@ -15,6 +15,9 @@ def index(request):
 def team(request):
     return render(request,'fyp/team.html')
 
+def demo(request):
+    return render(request,'fyp/demo.html')
+
 def video_upload(request):
     form= VideoForm(request.POST or None, request.FILES or None)
     if form.is_valid():

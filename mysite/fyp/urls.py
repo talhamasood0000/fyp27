@@ -8,5 +8,6 @@ urlpatterns = [
     path('team/',views.team,name='team'),
     path('login/',views.login_page,name='login'),
     path('signup/',views.signup_page,name='signup'),
+    path('demo/',views.demo,name='demo'),
     path('video_upload/',views.video_upload,name='video_upload'),
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
