@@ -1,13 +1,30 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
 from. forms import RegisterForm, LoginForm
+from django.contrib.auth import get_user_model
 
+
+User=get_user_model()
+
+from .models import Video
+from .forms import VideoForm
 
 def index(request):
     return render(request,'fyp/index.html')
 
 def team(request):
     return render(request,'fyp/team.html')
+
+def video_upload(request):
+    form= VideoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        obj=form.save(commit=False)
+        obj.user=User.objects.get(pk=request.user.id)
+        obj.save()
+    context={'form':form}
+    return render(request, 'fyp/admin-panel.html', context)
+
+
 
 def login_page(request):
     form=LoginForm(request.POST or None)

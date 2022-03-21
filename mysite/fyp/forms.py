@@ -1,8 +1,15 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from .models import Video
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 User=get_user_model()
+
+
+class VideoForm(forms.ModelForm):
+    class Meta:
+        model= Video
+        fields= ['videofile']
 
 class UserAdminCreationForm(forms.ModelForm):
     password1=forms.CharField(label='Password',widget=forms.PasswordInput)

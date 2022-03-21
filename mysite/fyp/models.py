@@ -1,5 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.conf import settings
+
+
+class Video(models.Model):
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    videofile= models.FileField(upload_to='upload_test_videos/', null=True)
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email,username,phonenumber,password=None):
