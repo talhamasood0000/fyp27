@@ -2,65 +2,7 @@
 <html lang="en">
 <head>
 
-
- 
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!--<script src="src/js/horizBarChart.js"></script>
-<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-
-
-<style>
-  * {
-      font-family: sans-serif;
-  }
-  
-  .bar{
-      fill: #16a085;
-  }
-  
-  .bar:hover{
-      fill: white;
-  }
-  
-  .tooltip {
-      background-color: #ecf0f1;
-      visibility: hidden;
-      position: absolute;
-      opacity: 0.8;
-      padding: 10px;
-      vertical-align: middle;
-      border-radius: 5px;
-      text-align: center;
-      width: 180px;
-  }
-  
-  .title {
-      text-anchor: middle;
-      font-size: 22px;
-  }
-  
-  .label {
-      text-anchor: middle;
-  } </style>
-
-
-
-
-
-
-
-
-
      <title>Zavirite</title>
-<!--
-
-DIGITAL TREND
-
-https://templatemo.com/tm-538-digital-trend
-
--->
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="description" content="">
@@ -84,6 +26,38 @@ https://templatemo.com/tm-538-digital-trend
           <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
           <link rel="stylesheet" href="% static 'css/video.css' %}">
           <link rel="stylesheet" href="% static 'css/navbar.css' %}">
+          <style>
+            * {
+              margin: 0;
+              padding: 0;
+              font-family: sans-serif;
+            }
+            /*.chartMenu {
+              width: 100vw;
+              height: 40px;
+              background: #1A1A1A;
+              color: rgba(255, 26, 104, 1);
+            }
+            .chartMenu p {
+              padding: 10px;
+              font-size: 20px;
+            }*/
+            .chartCard {
+              /*width: 100vw;
+              height: calc(100vh - 40px);
+              background: rgba(255, 26, 104, 0.2);*/
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .chartBox {
+              width: 700px;
+              padding: 20px;
+              border-radius: 20px;
+              border: solid 3px rgba(255, 26, 104, 1);
+              background: white;
+            }
+          </style>
 </head>
 <body>
 
@@ -226,7 +200,13 @@ https://templatemo.com/tm-538-digital-trend
     <div id="tab5">
       <h2 class="mb-4">Weekly Report</h2>
       <div class="container">
-        <canvas id="myChart"></canvas>
+        <!--<div class="chartMenu">
+        </div>-->
+        <div class="chartCard">
+          <div class="chartBox">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -310,54 +290,83 @@ https://templatemo.com/tm-538-digital-trend
 </div>
 
 <!-- Chart Script -->
-<script>
-  let myChart = document.getElementById('myChart').getContext('2d');
-
-  // Global Options
-  // Chart.defaults.global.defaultFontFamily = 'Lato';
-  //Chart.defaults.global.defaultFontSize = 18;
-  //Chart.defaults.global.defaultFontColor = '#777';
-
-
-  let massPopChart = new Chart(myChart, {
-    type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-    data:{
-      labels:['Boston', 'Worcester','Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-      datasets:[{
-        label:'Population',
-        data:[
-        675647,
-        206518,
-        155929,
-        118403,
-        115554,
-        105643
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // setup 
+    const data = {
+      //labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'Weekly Sales',
+        data: [
+          { days: 'Mon', products: {sales: 1, link: 'https://www.google.com'} },
+          { days: 'Tue', products: {sales: 2, link: 'https://www.grandeur.dev'} },
+          { days: 'Wed', products: {sales: 3, link: 'https://www.ieeeuet.org.pk'} },
+          { days: 'Thu', products: {sales: 4, link: 'https://www.amazon.com'} },
+          { days: 'Fri', products: {sales: 5, link: 'https://www.flipkart.com'} },
+          { days: 'Sat', products: {sales: 6, link: 'https://www.google.com'} },
+          { days: 'Sun', products: {sales: 7, link: 'https://www.google.com'} },
         ],
-        //backgroundColor: 'green'
-        backgroundColor:[
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
-          'rgba(255, 159, 64, 0.6)',
-          'rgba(255, 99, 132, 0.6)'
+        backgroundColor: [
+          'rgba(255, 26, 104, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(0, 0, 0, 0.2)'
         ],
-        borderWidth: 1,
-        borderColor: '#777',
-        hoverBorderWidth:3,
-        hoverBorderColor:'#000'
+        borderColor: [
+          'rgba(255, 26, 104, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(0, 0, 0, 1)'
+        ],
+        borderWidth: 1
       }]
-    },
-    options:{
-      title:{
-        display:true,
-        text:'Largest Cities In Massachusetts',
-        fontSize:25
-      },
+    };
+
+    // config 
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        parsing:{
+          xAxisKey: 'days',
+          yAxisKey: 'products.sales'
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    // pinpointing the chart, so that the click understands the canvas tag.
+    const ctx = document.getElementById('myChart');
+    // render init block
+    const myChart = new Chart(
+      ctx,
+      config
+    );
+    function clickHandler(click){
+      const points = myChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+      if (points.length){
+        const firstPoint = points[0];
+        //console.log(points);
+        console.log(firstPoint);
+        const value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
+        console.log(value.products.link);
+        location.href = value.products.link;
+        window.open(value.products.link)
+      }
     }
-  });
-</script>
+    ctx.onclick = clickHandler
+    </script>
+
      <!-- SCRIPTS -->
      <script src="{% static 'js/jquery.min.js' %}"></script>
      <script src="{% static 'js/bootstrap.min.js' %}"></script>
