@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 from. forms import RegisterForm, LoginForm
 from django.contrib.auth import get_user_model
 
-
 User=get_user_model()
 
 from .models import Video
@@ -27,8 +26,6 @@ def video_upload(request):
     context={'form':form}
     return render(request, 'fyp/admin-panel.html', context)
 
-
-
 def login_page(request):
     form=LoginForm(request.POST or None)
     context={'form':form}
@@ -51,3 +48,5 @@ def signup_page(request):
         form.save()
         return redirect('/')
     return render(request,'fyp/signup.html',context)
+
+
