@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
 from. forms import RegisterForm, LoginForm
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 User=get_user_model()
 
@@ -17,6 +18,7 @@ def team(request):
 def demo(request):
     return render(request,'fyp/demo.html')
 
+@login_required(login_url='/login/')
 def video_upload(request):
     form= VideoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -27,18 +29,25 @@ def video_upload(request):
     return render(request, 'fyp/admin-panel.html', context)
 
 def login_page(request):
-    form=LoginForm(request.POST or None)
-    context={'form':form}
-    print(context)
-    if form.is_valid():
-        email=form.cleaned_data.get('email')
-        password=form.cleaned_data.get('password')
-        user=authenticate(email=email,password=password)
-        if user is not None:
-            login(request,user)
-            return HttpResponse("hello world")
-        else:
-            return HttpResponse('Invalid Login')
+    if request.method=='POST':
+        form=LoginForm(request.POST or None)
+        context={'form':form}
+        print(context)
+        if form.is_valid():
+            email=form.cleaned_data.get('email')
+            password=form.cleaned_data.get('password')
+            user=authenticate(email=email,password=password)
+            if user is not None:
+                login(request,user)
+                if 'next' in request.POST:
+                    return redirect(request.POST.get('next'))
+                else:
+                    return redirect('/')
+            else:
+                return HttpResponse('Invalid Login')
+    else:
+        form=LoginForm()
+        context={'form':form}
     return render(request,'fyp/login.html',context)
 
 def signup_page(request):
@@ -49,4 +58,4 @@ def signup_page(request):
         return redirect('/')
     return render(request,'fyp/signup.html',context)
 
-
+ 
