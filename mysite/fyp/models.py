@@ -3,6 +3,12 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
 
 
+class VideoOutput(models.Model):
+    video=models.ForeignKey('Video', on_delete=models.CASCADE)
+    total_detected_card=models.IntegerField(default=0)
+    detected_time=models.CharField(max_length=100,default='')
+
+
 class Video(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     videofile= models.FileField(upload_to='upload_test_videos/', null=True)

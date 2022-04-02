@@ -18,16 +18,6 @@ def team(request):
 def demo(request):
     return render(request,'fyp/demo.html')
 
-@login_required(login_url='/login/')
-def video_upload(request):
-    form= VideoForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        obj=form.save(commit=False)
-        obj.user=User.objects.get(pk=request.user.id)
-        obj.save()
-    context={'form':form}
-    return render(request, 'fyp/admin-panel.html', context)
-
 def login_page(request):
     if request.method=='POST':
         form=LoginForm(request.POST or None)
@@ -57,5 +47,18 @@ def signup_page(request):
         form.save()
         return redirect('/')
     return render(request,'fyp/signup.html',context)
+
+@login_required(login_url='/login/')
+def video_upload(request):
+    form= VideoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        obj=form.save(commit=False)
+        obj.user=User.objects.get(pk=request.user.id)
+        obj.save()
+    context={'form':form}
+    return render(request, 'fyp/admin-panel.html', context)
+
+def output(request):
+    return render(request,'fyp/output.html')
 
  
