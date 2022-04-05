@@ -13,6 +13,7 @@ class Video(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     slug = models.SlugField(null=True, blank=True, unique=True)
     videofile= models.FileField(upload_to='upload_test_videos/', null=True)
+    result=models.BooleanField(default=False)
 
     def save(self, *args, **kwargs): # new
       if not self.slug:

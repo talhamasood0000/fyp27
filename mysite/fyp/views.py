@@ -63,6 +63,6 @@ def video_detail(request):
     return render(request,'fyp/video-detail.html',{'videos':videos})
 
 def output(request, slug):
-    print(slug)
     video=Video.objects.get(slug=slug)
+    
     return render(request,'fyp/output.html',{'video':video}) 
