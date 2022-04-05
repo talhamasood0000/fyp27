@@ -7,6 +7,7 @@ class VideoOutput(models.Model):
     video=models.ForeignKey('Video', on_delete=models.CASCADE)
     total_detected_card=models.IntegerField(default=0)
     detected_time=models.CharField(max_length=100,default='')
+    detected_image=models.ImageField(upload_to='upload_test_images/',default='')
 
 
 class Video(models.Model):

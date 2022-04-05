@@ -2,6 +2,7 @@ import tensorflow as tf
 import cv2
 import numpy as np
 import math
+from fyp.models import VideoOutput
 
 def detect_video(VIDEO_PATH,detect_fn):
     MIN_CONF_THRESH = float(0.95)
@@ -57,6 +58,9 @@ def detect_video(VIDEO_PATH,detect_fn):
             # print(f'{output_time_hr}:{output_time_min}:{output_time_sec:.2f}')
             print(f'Total cars detected: {total_cars_detected}')
             # cv2.imwrite(f'output/car_detected_{frameNumber}.jpg',image_with_detections)
+            record=VideoOutput(total_detected_card=total_cars_detected,
+            detected_time=output_time_hr+":"+output_time_min+":"+output_time_sec,
+            detected_image=image_with_detections)
         frameNumber=frameNumber+TIME_IN_FPS
     cv2.waitKey(0) 
     cap.release()

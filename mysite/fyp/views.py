@@ -74,6 +74,5 @@ def output(request, slug):
     return render(request,'fyp/output.html',{'video':video}) 
 
 def check(request):
-    # detect_video(r'C:\Users\Talha Masood\Documents\GitHub\fyp27\mysite\media\upload_test_videos\tmn2.mp4', LOADED_MODEL)
     detect_video('media/upload_test_videos/tmn2.mp4', LOADED_MODEL)
     return render(request,'fyp/check.html')
