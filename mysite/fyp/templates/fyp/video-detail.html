@@ -12,10 +12,12 @@
 
     {% for video in videos %}
         <h4>{{ video.user.username }}</h4>
+        <h4>{{ video.slug }}</h4>
         <div style="margin: 10px auto;">
         <video controls >
         <source src="{{video.videofile.url}}" type="video/mp4">
         </video>
+        <button><a href="{% url 'output' video.slug %}">Next Page</a></button>
         </div>
     {% endfor %}
 </body>
