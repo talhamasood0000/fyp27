@@ -61,7 +61,8 @@ def output(request):
     return render(request,'fyp/output.html')
 
 def video_detail(request):
-    videos=Video.objects.all()
+    current_user = request.user
+    videos=Video.objects.filter(user=current_user)
     return render(request,'fyp/video-detail.html',{'videos':videos})
 
  
