@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
-
+from django.template.defaultfilters import slugify
 
 class VideoOutput(models.Model):
     video=models.ForeignKey('Video', on_delete=models.CASCADE)
@@ -11,7 +11,13 @@ class VideoOutput(models.Model):
 
 class Video(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    slug = models.SlugField(null=True, blank=True, unique=True)
     videofile= models.FileField(upload_to='upload_test_videos/', null=True)
+
+    def save(self, *args, **kwargs): # new
+      if not self.slug:
+         self.slug = slugify(self.videofile.name)
+      return super().save(*args, **kwargs)
 
 
 class UserManager(BaseUserManager):

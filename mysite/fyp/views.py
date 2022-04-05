@@ -22,7 +22,6 @@ def login_page(request):
     if request.method=='POST':
         form=LoginForm(request.POST or None)
         context={'form':form}
-        print(context)
         if form.is_valid():
             email=form.cleaned_data.get('email')
             password=form.cleaned_data.get('password')
@@ -60,5 +59,9 @@ def video_upload(request):
 
 def output(request):
     return render(request,'fyp/output.html')
+
+def video_detail(request):
+    videos=Video.objects.all()
+    return render(request,'fyp/video-detail.html',{'videos':videos})
 
  
