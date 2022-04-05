@@ -135,4 +135,10 @@ STATICFILES_DIRS = (
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
- 
+
+import tensorflow as tf
+
+# PATH_TO_SAVED_MODEL = r'C:\Users\Talha Masood\Documents\GitHub\fyp27\mysite\ml_model\saved_model'
+PATH_TO_SAVED_MODEL = 'ml_model/saved_model'
+LOADED_MODEL = tf.saved_model.load(PATH_TO_SAVED_MODEL)
+  

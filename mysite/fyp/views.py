@@ -1,8 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
-from. forms import RegisterForm, LoginForm
+
+from ml_model.new_approach import detect_video
+from .forms import RegisterForm, LoginForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+
+LOADED_MODEL = getattr(settings, "LOADED_MODEL", None)
 
 User=get_user_model()
 
@@ -64,5 +69,11 @@ def video_detail(request):
 
 def output(request, slug):
     video=Video.objects.get(slug=slug)
-    
+    print(video.videofile.name)
+    detect_video('media/'+video.videofile.name, LOADED_MODEL)
     return render(request,'fyp/output.html',{'video':video}) 
+
+def check(request):
+    # detect_video(r'C:\Users\Talha Masood\Documents\GitHub\fyp27\mysite\media\upload_test_videos\tmn2.mp4', LOADED_MODEL)
+    detect_video('media/upload_test_videos/tmn2.mp4', LOADED_MODEL)
+    return render(request,'fyp/check.html')

@@ -1,15 +1,7 @@
-# Libraries
 import tensorflow as tf
 import cv2
 import numpy as np
 import math
-
-
-VIDEO_PATH=r'testing_material\screenshot1.mp4'
-
-
-PATH_TO_SAVED_MODEL = r'saved_model'
-LOADED_MODEL = tf.saved_model.load(PATH_TO_SAVED_MODEL)
 
 def detect_video(VIDEO_PATH,detect_fn):
     MIN_CONF_THRESH = float(0.95)
@@ -69,5 +61,3 @@ def detect_video(VIDEO_PATH,detect_fn):
     cv2.waitKey(0) 
     cap.release()
     cv2.destroyAllWindows() 
-
-
