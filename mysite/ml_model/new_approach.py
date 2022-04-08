@@ -3,8 +3,10 @@ import cv2
 import numpy as np
 import math
 from fyp.models import VideoOutput
+from django.core.files.base import ContentFile
 
-def detect_video(VIDEO_PATH,detect_fn):
+def detect_video(video,detect_fn):
+    VIDEO_PATH='media/'+video.videofile.name
     MIN_CONF_THRESH = float(0.95)
     TIME_IN_FPS=25*3
 
@@ -57,10 +59,12 @@ def detect_video(VIDEO_PATH,detect_fn):
         
             # print(f'{output_time_hr}:{output_time_min}:{output_time_sec:.2f}')
             print(f'Total cars detected: {total_cars_detected}')
-            # cv2.imwrite(f'output/car_detected_{frameNumber}.jpg',image_with_detections)
-            record=VideoOutput(total_detected_card=total_cars_detected,
-            detected_time=output_time_hr+":"+output_time_min+":"+output_time_sec,
-            detected_image=image_with_detections)
+            cv2.imwrite(f'output/car_detected_{frameNumber}.jpg',image_with_detections)
+            
+            record=VideoOutput(video=video,
+                total_detected_card=total_cars_detected,
+            detected_time=str(output_time_hr)+":"+str(output_time_min)+":"+str(output_time_sec))
+            record.save()
         frameNumber=frameNumber+TIME_IN_FPS
     cv2.waitKey(0) 
     cap.release()
