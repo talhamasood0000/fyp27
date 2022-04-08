@@ -20,9 +20,6 @@ def index(request):
 def team(request):
     return render(request,'fyp/team.html')
 
-def demo(request):
-    return render(request,'fyp/demo.html')
-
 def login_page(request):
     if request.method=='POST':
         form=LoginForm(request.POST or None)
@@ -59,20 +56,35 @@ def video_upload(request):
         obj=form.save(commit=False)
         obj.user=User.objects.get(pk=request.user.id)
         obj.save()
+        return redirect('/video_detail/')
     context={'form':form}
     return render(request, 'fyp/admin-panel.html', context)
 
+@login_required(login_url='/login/')
 def video_detail(request):
     current_user = request.user
-    videos=Video.objects.filter(user=current_user)
+    videos=Video.objects.filter(user=current_user).order_by('-id')
     return render(request,'fyp/video-detail.html',{'videos':videos})
 
+@login_required(login_url='/login/')
 def output(request, slug):
     video=Video.objects.get(slug=slug)
-    print(video.videofile.name)
-    detect_video(video, LOADED_MODEL)
-    return render(request,'fyp/output.html',{'video':video}) 
+    if not video.record:
+        detect_video(video, LOADED_MODEL)
+        record=Video(result=True)
+        record.save()
+    return render(request,'fyp/demo.html',{'video':video}) 
+
+# @login_required(login_url='/login/')
+# def demo(request):
+#     current_user = request.user
+#     videos=Video.objects.filter(user=current_user).order_by('-id')
+
+#     return render(request,'fyp/demo.html')
+
 
 def check(request):
     detect_video('media/upload_test_videos/tmn2.mp4', LOADED_MODEL)
     return render(request,'fyp/check.html')
+
+    

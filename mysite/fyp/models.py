@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
 from django.template.defaultfilters import slugify
+from random import randint
 
 class VideoOutput(models.Model):
     video=models.ForeignKey('Video', on_delete=models.CASCADE)
@@ -13,13 +14,22 @@ class VideoOutput(models.Model):
 class Video(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     slug = models.SlugField(null=True, blank=True, unique=True)
-    videofile= models.FileField(upload_to='upload_test_videos/', null=True)
+    videofile= models.FileField(upload_to='upload_test_videos/', null=True, unique=True)
     result=models.BooleanField(default=False)
 
-    def save(self, *args, **kwargs): # new
-      if not self.slug:
-         self.slug = slugify(self.videofile.name)
-      return super().save(*args, **kwargs)
+    def _get_unique_slug(self):
+        slug = slugify(self.videofile.name)
+        unique_slug = slug
+        num = 1
+        while Video.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(slug, num)
+            num += 1
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self._get_unique_slug()
+        super().save(*args, **kwargs)
 
 
 class UserManager(BaseUserManager):
