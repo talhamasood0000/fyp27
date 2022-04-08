@@ -70,7 +70,7 @@ def video_detail(request):
 def output(request, slug):
     video=Video.objects.get(slug=slug)
     print(video.videofile.name)
-    detect_video('media/'+video.videofile.name, LOADED_MODEL)
+    detect_video(video, LOADED_MODEL)
     return render(request,'fyp/output.html',{'video':video}) 
 
 def check(request):
