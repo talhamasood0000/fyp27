@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Video Detail Page
+
+    {% for video in videos %}
+        <h4>{{ video.user.username }}</h4>
+        <h4>{{ video.slug }}</h4>
+        <div style="margin: 10px auto;">
+        <video controls >
+        <source src="{{video.videofile.url}}" type="video/mp4">
+        </video>
+        <button><a href="{% url 'output' video.slug %}">Next Page</a></button>
+        </div>
+    {% endfor %}
+</body>
+</html>

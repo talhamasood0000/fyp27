@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fyp.apps.FypConfig'
+    'fyp.apps.FypConfig',
 ]
+
+AUTH_USER_MODEL='fyp.Account'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,3 +135,10 @@ STATICFILES_DIRS = (
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+import tensorflow as tf
+
+# PATH_TO_SAVED_MODEL = r'C:\Users\Talha Masood\Documents\GitHub\fyp27\mysite\ml_model\saved_model'
+PATH_TO_SAVED_MODEL = 'ml_model/saved_model'
+LOADED_MODEL = tf.saved_model.load(PATH_TO_SAVED_MODEL)
+  
