@@ -10,8 +10,8 @@ urlpatterns = [
     path('signup/',views.signup_page,name='signup'),
     path('video_upload/',views.video_upload,name='video_upload'),
     path('video_detail/',views.video_detail,name='video_detail'),
-    path('check/',views.check,name='check'),
+    # path('check/',views.check,name='check'),
     path('<slug:slug>/',views.output,name='output'),
-    # path('demo/',views.demo,name='demo'),
+    path('demo/',views.demo,name='demo'),
     
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

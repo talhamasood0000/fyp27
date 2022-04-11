@@ -1,3 +1,4 @@
+from unittest import result
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
 
@@ -69,22 +70,28 @@ def video_detail(request):
 @login_required(login_url='/login/')
 def output(request, slug):
     video=Video.objects.get(slug=slug)
-    if not video.record:
+    if video.result:
+        return HttpResponse("Already Checked")
+    else:
         detect_video(video, LOADED_MODEL)
-        record=Video(result=True)
-        record.save()
+        video.result=True
+        video.save()
+        return HttpResponse("Now Checked")
     return render(request,'fyp/demo.html',{'video':video}) 
 
-# @login_required(login_url='/login/')
-# def demo(request):
-#     current_user = request.user
-#     videos=Video.objects.filter(user=current_user).order_by('-id')
-
-#     return render(request,'fyp/demo.html')
 
 
-def check(request):
-    detect_video('media/upload_test_videos/tmn2.mp4', LOADED_MODEL)
+
+@login_required(login_url='/login/')
+def demo(request):
+    current_user = request.user
+    videos=Video.objects.filter(user=current_user).order_by('-id')
+
     return render(request,'fyp/check.html')
+
+
+# def check(request):
+#     detect_video('media/upload_test_videos/tmn2.mp4', LOADED_MODEL)
+#     return render(request,'fyp/check.html')
 
     
