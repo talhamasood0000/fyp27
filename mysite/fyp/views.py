@@ -65,19 +65,19 @@ def video_upload(request):
 def video_detail(request):
     current_user = request.user
     videos=Video.objects.filter(user=current_user).order_by('-id')
-    return render(request,'fyp/video-detail.html',{'videos':videos})
+    return render(request,'fyp/video-page.html',{'videos':videos})
 
 @login_required(login_url='/login/')
 def output(request, slug):
     video=Video.objects.get(slug=slug)
     if video.result:
-        return HttpResponse("Already Checked")
+        
+        return render(request,'fyp/demo.html',{'video':video})
     else:
         detect_video(video, LOADED_MODEL)
         video.result=True
         video.save()
-        return HttpResponse("Now Checked")
-    return render(request,'fyp/demo.html',{'video':video}) 
+        return render(request,'fyp/demo.html',{'video':video}) 
 
 
 

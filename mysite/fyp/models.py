@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
 from django.template.defaultfilters import slugify
-from random import randint
 
 class VideoOutput(models.Model):
     video=models.ForeignKey('Video', on_delete=models.CASCADE)

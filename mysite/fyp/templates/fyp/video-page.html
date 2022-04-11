@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,47 +95,30 @@ https://templatemo.com/tm-538-digital-trend
     <!-- HERO -->
     <br><br>
     <!--Video Part Start-->
+    {% for video in videos %}
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="video-overlay">
                     <video class="clip" muted>
-                        <source src="images/video-1.mp4" type="video/mp4" />
+                        <source src="{{video.videofile.url}}" type="video/mp4" />
                     </video>
                     <div class="playpause"></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <center>
-                    <a href="#" class="btn btn-primary btn-lg active" id="video-btn" role="button" aria-pressed="true">Upload</a>
+                    <a href="{% url 'output' video.slug %}" class="btn btn-primary btn-lg active" id="video-btn" role="button" aria-pressed="true">Upload</a>
                     <a href="#" class="btn btn-secondary btn-lg active" id="video-btn" role="button" aria-pressed="true">Delete</a>
                 </center>
             </div>
         </div>
     </div>
     <br>
+    {% endfor %}
+    
     <!--Video Part End-->
-    <!--Video Part Start-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="video-overlay">
-                    <video class="clip" muted>
-                        <source src="images/video-1.mp4" type="video/mp4" />
-                    </video>
-                    <div class="playpause"></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <center>
-                    <a href="#" class="btn btn-primary btn-lg active" role="button" id="video-btn" aria-pressed="true">Upload</a>
-                    <a href="#" class="btn btn-secondary btn-lg active" role="button" id="video-btn" aria-pressed="true">Delete</a>
-                </center>
-            </div>
-        </div>
-    </div>
-    <br>
-    <!--Video Part End-->
+
 
     <!--footer-->
     <footer class="site-footer" id="contact">

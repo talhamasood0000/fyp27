@@ -60,10 +60,12 @@ def detect_video(video,detect_fn):
             # print(f'{output_time_hr}:{output_time_min}:{output_time_sec:.2f}')
             print(f'Total cars detected: {total_cars_detected}')
             # cv2.imwrite(f'output/car_detected_{frameNumber}.jpg',image_with_detections)
-            
+            ret, buf=cv2.imencode('.jpg',image_with_detections)
+
             record=VideoOutput(video=video,
                 total_detected_card=total_cars_detected,
             detected_time=str(output_time_hr)+":"+str(output_time_min)+":"+str(output_time_sec))
+            record.detected_image.save('car_detected.jpg',ContentFile(buf.tobytes()))
             record.save()
         frameNumber=frameNumber+TIME_IN_FPS
     cv2.waitKey(0) 
