@@ -11,4 +11,17 @@ python manage.py migrate
 python manage.py runserver
 python manage.py flush
 
+//githib commands
+git log --graph --oneline --decorate
+
+git log --after="2014-7-1" --before="2014-7-4"
+
+git log --author="John\|Mary"
+
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+//after this
+git lg
+
+
+
 fdfa alt+x
