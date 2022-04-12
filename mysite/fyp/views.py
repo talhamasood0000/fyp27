@@ -1,4 +1,3 @@
-from unittest import result
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
 
@@ -22,6 +21,9 @@ def team(request):
     return render(request,'fyp/team.html')
 
 def login_page(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+
     if request.method=='POST':
         form=LoginForm(request.POST or None)
         context={'form':form}
@@ -42,7 +44,14 @@ def login_page(request):
         context={'form':form}
     return render(request,'fyp/login.html',context)
 
+def logout_page(request):
+    logout(request)
+    return redirect('/login/')
+
 def signup_page(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+
     form=RegisterForm(request.POST or None)
     context={'form':form}
     if form.is_valid():
@@ -65,29 +74,30 @@ def video_upload(request):
 def video_detail(request):
     current_user = request.user
     videos=Video.objects.filter(user=current_user).order_by('-id')
-    return render(request,'fyp/video-page.html',{'videos':videos})
+    return render(request,'fyp/video-detail.html',{'videos':videos})
+
+
 
 @login_required(login_url='/login/')
 def output(request, slug):
     video=Video.objects.get(slug=slug)
     if video.result:
-        
-        return render(request,'fyp/demo.html',{'video':video})
+        return render(request,'fyp/output.html',{'video':video})
     else:
         detect_video(video, LOADED_MODEL)
         video.result=True
         video.save()
-        return render(request,'fyp/demo.html',{'video':video}) 
+        return render(request,'fyp/output.html',{'video':video}) 
 
 
 
 
-@login_required(login_url='/login/')
-def demo(request):
-    current_user = request.user
-    videos=Video.objects.filter(user=current_user).order_by('-id')
+# @login_required(login_url='/login/')
+# def demo(request):
+#     current_user = request.user
+#     videos=Video.objects.filter(user=current_user).order_by('-id')
 
-    return render(request,'fyp/check.html')
+#     return render(request,'fyp/check.html')
 
 
 # def check(request):

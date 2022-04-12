@@ -54,7 +54,7 @@ https://templatemo.com/tm-538-digital-trend
                          <a href="{% url 'index' %}" class="nav-link smoothScroll">Home</a>
                      </li>
                     <li class="nav-item">
-                        <a href="index.html#about" class="nav-link smoothScroll">About us</a>
+                        <a href="#about2" class="nav-link smoothScroll">About us</a>
                     </li>
                     <li class="nav-item">
                         <a href="#features" class="nav-link smoothScroll">Services</a>
@@ -66,10 +66,15 @@ https://templatemo.com/tm-538-digital-trend
                          <a href="#contact" class="nav-link">Contact</a>
                      </li>
                      <li class="nav-item">
-                         <a href="{% url 'demo' %}" class="nav-link">Get a demo</a>
+                         <a href="{% url 'video_upload' %}" class="nav-link">Get a demo</a>
                      </li>
                     <li class="nav-item">
-                        <a href="{% url 'signup' %}" class="nav-link contact">Sign Up/Login</a>
+                         {% if user.is_authenticated %}
+                              <a href="{% url 'signup' %}" class="nav-link contact">{{ user.username }}</a>
+                         {% else %}
+                              <a href="{% url 'signup' %}" class="nav-link contact">Login/Signup</a>
+                         {% endif %}
+                        <!-- <a href="{% url 'signup' %}" class="nav-link contact">Sign Up/Login</a> -->
                     </li>
                 </ul>
             </div>
@@ -125,7 +130,7 @@ https://templatemo.com/tm-538-digital-trend
 </div>
 
      <!-- ABOUT -->
-     <section class="about section-padding pb-0" id="about">
+     <section class="about section-padding pb-0" id="about2">
           <div class="container">
                <div class="row">
 
