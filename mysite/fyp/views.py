@@ -1,18 +1,19 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
-
-from ml_model.new_approach import detect_video
-from .forms import RegisterForm, LoginForm
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
-LOADED_MODEL = getattr(settings, "LOADED_MODEL", None)
+from ml_model.new_approach import detect_video
+from .forms import RegisterForm, LoginForm,VideoForm
+from .models import Video,VideoOutput
+import json
+
+LOADED_MODEL = getattr(settings, "LOADED_MODEL", None) 
 
 User=get_user_model()
 
-from .models import Video
-from .forms import VideoForm
 
 def index(request):
     return render(request,'fyp/index.html')
@@ -65,43 +66,39 @@ def video_upload(request):
     if form.is_valid():
         obj=form.save(commit=False)
         obj.user=User.objects.get(pk=request.user.id)
+        print(obj.user)
         obj.save()
-        return redirect('/video_detail/')
+
+        return redirect('/all_videos/')
     context={'form':form}
-    return render(request, 'fyp/admin-panel.html', context)
+    return render(request, 'fyp/video-upload.html', context)
 
 @login_required(login_url='/login/')
-def video_detail(request):
+def all_videos(request):
     current_user = request.user
     videos=Video.objects.filter(user=current_user).order_by('-id')
-    return render(request,'fyp/video-detail.html',{'videos':videos})
-
-
+    return render(request,'fyp/all-videos.html',{'videos':videos})
 
 @login_required(login_url='/login/')
-def output(request, slug):
-    video=Video.objects.get(slug=slug)
+def redirect_page(request, slug):
+    video=get_object_or_404(Video, slug=slug)
+    # video=Video.objects.get(slug=slug)
     if video.result:
-        return render(request,'fyp/output.html',{'video':video})
+        return render(request,'fyp/redirect.html',{'video':video})
     else:
         detect_video(video, LOADED_MODEL)
         video.result=True
         video.save()
-        return render(request,'fyp/output.html',{'video':video}) 
+        return render(request,'fyp/redirect.html',{'video':video}) 
 
+@login_required(login_url='/login/')
+def demo(request,slug):
+    video=get_object_or_404(Video, slug=slug)
+    all_items=VideoOutput.objects.filter(video=video)
+    car_detected=[item.total_detected_card for item in all_items]
+    time_detected=[item.detected_time for item in all_items]
+    context={"car_detected":json.dumps(car_detected),"time_detected":json.dumps(time_detected)}
+    return render(request,'fyp/demo.html',context)
 
-
-
-# @login_required(login_url='/login/')
-# def demo(request):
-#     current_user = request.user
-#     videos=Video.objects.filter(user=current_user).order_by('-id')
-
-#     return render(request,'fyp/check.html')
-
-
-# def check(request):
-#     detect_video('media/upload_test_videos/tmn2.mp4', LOADED_MODEL)
-#     return render(request,'fyp/check.html')
 
     

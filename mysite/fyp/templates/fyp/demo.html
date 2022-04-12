@@ -1,0 +1,401 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--<script src="src/js/horizBarChart.js"></script>
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+
+
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        
+        .bar {
+            fill: #16a085;
+        }
+        
+        .bar:hover {
+            fill: white;
+        }
+        
+        .tooltip {
+            background-color: #ecf0f1;
+            visibility: hidden;
+            position: absolute;
+            opacity: 0.8;
+            padding: 10px;
+            vertical-align: middle;
+            border-radius: 5px;
+            text-align: center;
+            width: 180px;
+        }
+        
+        .title {
+            text-anchor: middle;
+            font-size: 22px;
+        }
+        
+        .label {
+            text-anchor: middle;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+    <title>Zavirite</title>
+    <!--
+
+DIGITAL TREND
+
+https://templatemo.com/tm-538-digital-trend
+
+-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-pro-5.14.0/fontawesome-pro-5.14.0-web/css/all.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'css/templatemo-digital-trend.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flickity.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chapters_members.css' %}">
+    <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
+    <link rel="stylesheet" href="{% static 'css/video.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+</head>
+
+<body>
+
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg" id="navbar-desk">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fal fa-eye-evil"></i> Zavirite
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#bg-animation" class="nav-link smoothScroll"><i class="fas fa-home-lg-alt"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="btn my-2 my-sm-0 search" onclick="openSearch()"><i class="fad fa-bell"><span class="badge">3</span></i></div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="signup.html" class="nav-link contact">Sign Up/Login</a>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </nav>
+    <!--Navbar end-->
+    <!--Mobile Navbar-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="navbar-mob">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="index.html"><i class="fal fa-eye-evil"></i> Zavirite</a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item" onclick="openTab1()">
+                <a class="nav-link" href="#">Homepage</a>
+            </li>
+            <li class="nav-item" onclick="openTab2()">
+                <a class="nav-link" href="#">Vehicle Entering</a>
+            </li>
+            <li class="nav-item" onclick="openTab3()">
+                <a class="nav-link" href="#">No of Labour</a>
+            </li>
+            <li class="nav-item" onclick="openTab4()">
+                <a class="nav-link" href="#">Dummy</a>
+            </li>
+            <li class="nav-item" onclick="openTab5()">
+                <a class="nav-link" href="#">Statistics</a>
+            </li>
+        </ul>
+    </nav>
+    <!--Mobile Navbar End-->
+    <!--sidebar started-->
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        <i class="fal fa-eye-evil"></i>
+        <span class="sr-only">Toggle Menu</span>
+      </button>
+            </div>
+            <h1><a href="demo.html" class="logo">Dashboard</a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active" onclick="openTab1()">
+                    <a href="#"><span class="fa fa-home mr-3"></span> Homepage</a>
+                </li>
+                <li onclick="openTab2()">
+                    <a href="#"><span class="fa fa-user mr-3"></span> Vehicle Entering</a>
+                </li>
+                <li onclick="openTab3()">
+                    <a href="#"><span class="fa fa-sticky-note mr-3"></span> No of Labour</a>
+                </li>
+                <li onclick="openTab4()">
+                    <a href="#"><span class="fa fa-sticky-note mr-3"></span>Dummy</a>
+                </li>
+                <li onclick="openTab5()">
+                    <a href="#"><span class="fa fa-sticky-note mr-3"></span>Statistics</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <div id="tab1">
+                <h2 class="mb-4">Welcome Back!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div id="tab2">
+                <h2 class="mb-4">Vehicle Entering</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <div class="video-overlay">
+                                <video class="clip" muted>
+                  <source src="images/video1.mp4" type="video/mp4" />
+              </video>
+                                <div class="playpause"></div>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <br>
+                    <h4>Time of entery: 2:32pm<br>Time of exit: 2:53pm</h4>
+
+                </div>
+            </div>
+
+            <div id="tab3">
+                <h2 class="mb-4">No of Labour</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <div class="video-overlay">
+                                <video class="clip" muted>
+                  <source src="images/video-1.mp4" type="video/mp4" />
+              </video>
+                                <div class="playpause"></div>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <br>
+                    <h4>Time: 3:12pm<br>No. of labour: 1</h4>
+                    <br>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <div class="video-overlay">
+                                <video class="clip" muted>
+                  <source src="images/video-2.mp4" type="video/mp4" />
+              </video>
+                                <div class="playpause"></div>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                    <br>
+                    <h4>Time: 3:12pm<br>No. of labour: 1</h4>
+
+                </div>
+            </div>
+            <div id="tab4">
+                <h2 class="mb-4">Weekly Report</h2>
+                <div class="conatainer">
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <img src="images/graph.png" alt="">
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="tab5">
+                <h2 class="mb-4">Weekly Report</h2>
+                <div class="container">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!--footer-->
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up">
+                    <h4 class="my-4">Main Menu</h4>
+                    <p class="mb-1">
+                        <a href="#">
+                            <i class="fas fa-home-lg-alt mr-2 footer-icon"></i> Home
+                        </a>
+                        <br>
+                        <a href="#">
+                            <i class="fad fa-user-friends mr-2 footer-icon"></i> Our Team
+                        </a>
+                        <br>
+                        <a href="#">
+                            <i class="fas fa-scroll-old mr-2 footer-icon"></i> About us
+                        </a>
+                        <br>
+                        <a href="#">
+                            <i class="fad fa-desktop mr-2 footer-icon"></i> Get a demo
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="my-4">News and Resources</h4>
+
+                    <p class="mb-1">
+                        <a href="#">
+                            <i class="fas fa-splotch mr-2 footer-icon"></i> Blog
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="my-4">Contact Info</h4>
+
+                    <p class="mb-1">
+                        <i class="fa fa-phone mr-2 footer-icon"></i> +99 080 070 4224
+                    </p>
+
+                    <p>
+                        <a href="#">
+                            <i class="fa fa-envelope mr-2 footer-icon"></i> hello@company.com
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="my-4">Our Office</h4>
+
+                    <p class="mb-1">
+                        <i class="fa fa-home mr-2 footer-icon"></i> Av. Lúcio Costa - Barra da Tijuca, Rio de Janeiro - RJ, Brazil
+                    </p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/IEEEUETLahore" class="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href=" https://www.facebook.com/ieeeuet/" class="twitter"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/ieeeuetlahore/" class="twitter"><i class="fab fa-instagram"></i></a>
+                        <a href="youtube.com/channel/UCrOtKM-JNFKCovCNYhAvYrg" class="twitter"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/ieee-uet-lahore" class="twitter"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-end">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center">
+                <h2>
+                    © Copyright Zavirite. All Rights Reserved
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Script -->
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+
+        // Global Options
+        // Chart.defaults.global.defaultFontFamily = 'Lato';
+        //Chart.defaults.global.defaultFontSize = 18;
+        //Chart.defaults.global.defaultFontColor = '#777';
+
+
+        let massPopChart = new Chart(myChart, {
+            type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: {{time_detected|safe}},
+                datasets: [{
+                    label: 'Time',
+                    data: [{{ cars_detected|safe }}],
+                    //backgroundColor: 'green'
+                    backgroundColor: [
+                        'rgba(137, 150, 78, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Largest Cities In Massachusetts',
+                    fontSize: 25
+                },
+            }
+        });
+    </script>
+    <!-- SCRIPTS -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/aos.js"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/smoothscroll.js' %}"></script>
+    <script src="{% static 'js/custom.js"></script>
+    <script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+
+    <script src="{% static 'js/p5.min.js"></script>
+    <script src="{% static 'js/vanta.topology.min.js' %}"></script>
+    <script src="{% static 'js/team.js' %}"></script>
+    <script src="{% static 'js/newsletter.js' %}"></script>
+    <script src="{% static 'js/hover.js"></script>
+    <script src="{% static 'js/play-pause.js' %}"></script>
+    <script src="{% static 'js/search-popup.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+

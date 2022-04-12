@@ -10,12 +10,8 @@ urlpatterns = [
     path('logout/',views.logout_page,name='logout'),
     path('signup/',views.signup_page,name='signup'),
     path('video_upload/',views.video_upload,name='video_upload'),
-    path('video_detail/',views.video_detail,name='video_detail'),
-    path('<slug:slug>/',views.output,name='output'),
+    path('all_videos/',views.all_videos,name='all_videos'),
+    path('redirect-page/<slug:slug>/',views.redirect_page,name='redirect_page'),
+    path('<slug:slug>/',views.demo,name='demo'),
 
-
-    # path('check/',views.check,name='check'),
-    # path('demo/',views.demo,name='demo'),
-    
-    
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
