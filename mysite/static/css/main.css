@@ -588,3 +588,106 @@ footer .social-links a:hover {
         padding: 20px;
     }
 }
+
+
+/* new navbar */
+
+#myTopnav {
+    background-color: #002222!important;
+}
+
+.topnav {
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 16px 18px;
+    text-decoration: none;
+    /* color: var(--white-color);
+    font-size: var(--h2-font-size); */
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #89964e;
+    color: white;
+}
+
+.topnav a.main-tab {
+    color: var(--white-color);
+    font-size: 22px!important;
+    margin-top: -5px;
+}
+
+
+/* .topnav a.sub-tab {
+    font-size: 17px;
+    margin-top: 10px;
+} */
+
+.topnav .icon {
+    display: none;
+}
+
+.topnav #signup-btn {
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius-large);
+    color: var(--secondary-color);
+    font-family: var(--font-bold-family);
+    padding: 10px 15px;
+    margin-top: 5px;
+}
+
+.topnav #signup-btn:hover {
+    background-color: #89964e;
+    color: white;
+    border-color: #89964e;
+}
+
+.topnav #profile-btn {
+    color: var(--secondary-color);
+}
+
+.topnav #profile-btn:hover {
+    background-color: #002222!important;
+    color: #ddd;
+}
+
+.topnav #profile-btn i {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive {
+        position: relative;
+    }
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}

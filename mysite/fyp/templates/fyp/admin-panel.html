@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +82,7 @@ https://templatemo.com/tm-538-digital-trend
                     <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
                         <div class="hero-text">
                             <h1 class="text-white">
-                                Welcome to admin panel
+                                Welcome <span>Name</span>!
                             </h1>
                         </div>
                     </div>
@@ -95,36 +94,53 @@ https://templatemo.com/tm-538-digital-trend
     <!-- HERO -->
     <br><br>
     <!--Video Part Start-->
-    {% for video in videos %}
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-2"></div>
+            <div class="col-8">
                 <div class="video-overlay">
                     <video class="clip" muted>
-                        <source src="{{video.videofile.url}}" type="video/mp4" />
-                    </video>
+                   <source src="images/video-1.mp4" type="video/mp4" />
+                 </video>
                     <div class="playpause"></div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <center>
-                    <a href="{% url 'redirect_page' video.slug %}" class="btn btn-primary btn-lg active" id="video-btn" role="button" aria-pressed="true">Result</a>
-                    <a href="#" class="btn btn-secondary btn-lg active" id="video-btn" role="button" aria-pressed="true">Delete</a>
-                </center>
-            </div>
+            <div class="col-2"></div>
         </div>
     </div>
+    <center>
+        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Upload</a>
+        <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Download</a>
+    </center>
     <br>
-    {% endfor %}
-    
     <!--Video Part End-->
-
+    <!--Video Part Start-->
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="video-overlay">
+                    <video class="clip" muted>
+                <source src="images/video-1.mp4" type="video/mp4" />
+              </video>
+                    <div class="playpause"></div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <center>
+        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Upload</a>
+        <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Download</a>
+    </center>
+    <br>
+    <!--Video Part End-->
 
     <!--footer-->
     <footer class="site-footer" id="contact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up">
+                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up">
                     <h4 class="my-4">Main Menu</h4>
                     <p class="mb-1">
                         <a href="#">
@@ -144,7 +160,7 @@ https://templatemo.com/tm-538-digital-trend
                         </a>
                     </p>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+                <!-- <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
                     <h4 class="my-4">News and Resources</h4>
 
                     <p class="mb-1">
@@ -152,25 +168,25 @@ https://templatemo.com/tm-538-digital-trend
                             <i class="fas fa-splotch mr-2 footer-icon"></i> Blog
                         </a>
                     </p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
+                </div> -->
+                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
                     <h4 class="my-4">Contact Info</h4>
 
                     <p class="mb-1">
-                        <i class="fa fa-phone mr-2 footer-icon"></i> +99 080 070 4224
+                        <i class="fa fa-phone mr-2 footer-icon"></i> +92 313 4031350
                     </p>
 
                     <p>
                         <a href="#">
-                            <i class="fa fa-envelope mr-2 footer-icon"></i> hello@company.com
+                            <i class="fa fa-envelope mr-2 footer-icon"></i> hi@zavirite.com
                         </a>
                     </p>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
                     <h4 class="my-4">Our Office</h4>
 
                     <p class="mb-1">
-                        <i class="fa fa-home mr-2 footer-icon"></i> Av. Lúcio Costa - Barra da Tijuca, Rio de Janeiro - RJ, Brazil
+                        <i class="fa fa-home mr-2 footer-icon"></i> University of Engineering and Technology Lahore
                     </p>
                     <div class="social-links">
                         <a href="https://twitter.com/IEEEUETLahore" class="twitter"><i class="fab fa-twitter"></i></a>
@@ -192,18 +208,17 @@ https://templatemo.com/tm-538-digital-trend
             </div>
         </div>
     </div>
-
     <!-- SCRIPTS -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/aos.js"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/smoothscroll.js' %}"></script>
-    <script src="{% static 'js/custom.js"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
     <script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 
-    <script src="{% static 'js/p5.min.js"></script>
+    <script src="{% static 'js/p5.min.js' %}"></script>
     <script src="{% static 'js/vanta.topology.min.js' %}"></script>
     <script src="{% static 'js/team.js' %}"></script>
     <script src="{% static 'js/newsletter.js' %}"></script>
@@ -221,7 +236,7 @@ https://templatemo.com/tm-538-digital-trend
             scaleMobile: 1.00
         })
     </script>
-    <script src="js/zenith.js"></script>
+    <script src="{% static 'js/zenith.js' %}"></script>
     <script>
         $('#default').zenith({
             layout: 'default',
