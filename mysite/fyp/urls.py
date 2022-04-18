@@ -12,6 +12,8 @@ urlpatterns = [
     path('video_upload/',views.video_upload,name='video_upload'),
     path('all_videos/',views.all_videos,name='all_videos'),
     path('redirect-page/<slug:slug>/',views.redirect_page,name='redirect_page'),
+    path('generate_report/',views.generate_report,name='generate_report'),
     path('<slug:slug>/',views.demo,name='demo'),
+    
 
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
