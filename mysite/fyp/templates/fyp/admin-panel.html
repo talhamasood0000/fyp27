@@ -38,7 +38,7 @@ https://templatemo.com/tm-538-digital-trend
 <body>
 
     <!-- MENU BAR -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fal fa-eye-evil"></i> Zavirite
@@ -74,7 +74,28 @@ https://templatemo.com/tm-538-digital-trend
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
+    <div class="topnav" id="myTopnav">
+        <a href="{% url 'index' %}" class="main-tab"><i class="fal fa-eye-evil"></i> Zavirite</a>
+        <a href="{% url 'index' %}" class="sub-tab">Home</a>
+        <a href="{% url 'index' %}.#about" class="sub-tab">About</a>
+        <a href="{% url 'index' %}.#features" class="sub-tab">Services</a>
+        <a href="{% url 'index' %}.#contact" class="sub-tab">Contact</a>
+        <a href="{% url 'team' %}" class="sub-tab">Our Team</a>
+        <a href="{% url 'video_upload' %}" class="sub-tab">Get a demo</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" id="signup-btn">Logout</a>
+
+            <a href="#" id="profile-btn"><i class="fas fa-user"></i> Profile</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        {% else %}
+            <a href="{% url 'signup' %}" id="signup-btn">Sign Up/Login</a>
+        {% endif %}
+    </div>
+
     <header id="bg-animation">
         <section class="hero hero-bg d-flex justify-content-center align-items-center">
             <div class="container">
@@ -100,7 +121,7 @@ https://templatemo.com/tm-538-digital-trend
             <div class="col-8">
                 <div class="video-overlay">
                     <video class="clip" muted>
-                   <source src="{% static 'images/video-1.mp4' %}" type="video/mp4" />
+                   <source src="images/video-1.mp4" type="video/mp4" />
                  </video>
                     <div class="playpause"></div>
                 </div>
@@ -121,7 +142,7 @@ https://templatemo.com/tm-538-digital-trend
             <div class="col-8">
                 <div class="video-overlay">
                     <video class="clip" muted>
-                <source src="{% static 'images/video-1.mp4' %}" type="video/mp4" />
+                <source src="images/video-1.mp4" type="video/mp4" />
               </video>
                     <div class="playpause"></div>
                 </div>
@@ -222,7 +243,6 @@ https://templatemo.com/tm-538-digital-trend
     <script src="{% static 'js/vanta.topology.min.js' %}"></script>
     <script src="{% static 'js/team.js' %}"></script>
     <script src="{% static 'js/newsletter.js' %}"></script>
-    <script src="{% static 'js/hover.js' %}"></script>
     <script src="{% static 'js/play-pause.js' %}"></script>
     <script>
         VANTA.TOPOLOGY({

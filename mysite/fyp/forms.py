@@ -1,10 +1,17 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from .models import Video, VideoOutput
+from .models import Video, VideoOutput, Newsletter
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 User=get_user_model()
 
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = ('email',)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'name':'email','placeholder':'Email Address','type':'email'})
 
 class VideoForm(forms.ModelForm):
     class Meta:

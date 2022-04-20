@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Construction Site Surveillance System-Contact</title>
+    <title>Zavirite</title>
     <!--
 
 DIGITAL TREND
@@ -24,12 +24,15 @@ https://templatemo.com/tm-538-digital-trend
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-pro-5.14.0/fontawesome-pro-5.14.0-web/css/all.css' %}">
+    <link rel="stylesheet" type="{% static 'text/css" href="{% static 'fontawesome-pro-5.14.0/fontawesome-pro-5.14.0-web/css/all.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{% static 'css/templatemo-digital-trend.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/flickity.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chapters_members.css' %}">
+    <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
+    <link rel="stylesheet" href="{% static 'css/video.css' %}">
 </head>
 
 <body>
@@ -42,8 +45,8 @@ https://templatemo.com/tm-538-digital-trend
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
@@ -54,13 +57,13 @@ https://templatemo.com/tm-538-digital-trend
                         <a href="index.html#about" class="nav-link smoothScroll">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.html#features" class="nav-link smoothScroll">Features</a>
+                        <a href="#features" class="nav-link smoothScroll">Services</a>
                     </li>
                     <li class="nav-item">
                         <a href="team.html" class="nav-link">Our Team</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.html#contact" class="nav-link">Contact</a>
+                        <a href="#contact" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a href="demo.html" class="nav-link">Get a demo</a>
@@ -93,72 +96,34 @@ https://templatemo.com/tm-538-digital-trend
         {% endif %}
     </div>
 
-    <!-- CONTACT -->
-    <section class="contact section-padding">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-6 mx-auto col-md-7 col-12 py-5 mt-5 text-center" data-aos="fade-up">
-
-                    <h1 class="mb-4">Hey there, <strong>thank you</strong> for your interest, you can just <strong>signup </strong>by the following easy steps.</h1>
-
-                    <!--<p>you can also email us at <a href="mailto:hello@company.com">hello@company.com</a></p>
-                      <p>Please follow our <a rel="nofollow" href="https://templatemo.com/contact">contact page</a> to <strong>setup</strong> the contact form.</p>-->
-                </div>
-
-                <div class="col-lg-8 mx-auto col-md-10 col-12">
-
-                    <!-- Follow https://templatemo.com/contact page to setup your own contact form -->
-
-                    <form action="#" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-12">
-                                <!-- <input type="text" class="form-control" name="name" placeholder="Name"> -->
-                                {{form.email}}
-                            </div>
-
-                            <div class="col-12">
-                                <!-- <input type="email" class="form-control" name="email" placeholder="Email"> -->
-                                {{form.username}}
-                            </div>
-                            <div class="col-12">
-                                <!-- <input type="email" class="form-control" name="email" placeholder="Email"> -->
-                                {{form.phonenumber}}
-                            </div>
-
-                            <div class="col-12">
-                                <!-- <input type="password" class="form-control" name="password" placeholder="Password"> -->
-                                {{form.password1}}
-                                <small>*Choose a strong password</small>
-                            </div>
-                            <div class="col-12">
-                                <!-- <input type="password" class="form-control" name="password" placeholder="Confirm Password"> -->
-                                {{form.password2}}
-                                <center>Already have an account click here to <a href="{% url 'login' %}"><b>login</b></a>.</center>
-                            </div>
-                            <div class="col-lg-5 mx-auto col-7">
-                                <button type="submit" class="form-control" id="submit-button" name="submit">Done!</button>
-                            </div>
+    <header id="bg-animation">
+        <section class="hero hero-bg d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
+                        <div class="hero-text">
+                            <h1 class="text-white">
+                                Report
+                            </h1>
                         </div>
-
-                    </form>
+                    </div>
+                    <div class="col-lg-6 col-12"></div>
                 </div>
-
             </div>
-        </div>
-    </section>
-
-    <!-- How to change your own map point
-	1. Go to Google Maps
-	2. Click on your location point
-	3. Click "Share" and choose "Embed map" tab
-	4. Copy only URL and paste it within the src="" field below
--->
-    <div class="google-map" data-aos="zoom-in">
-        <iframe src="https://maps.google.com/maps?q=university%20of%20engineering%20and%20technology%20lahore&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1920" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-    </div>
-
+        </section>
+    </header>
+    <!-- HERO -->
+    <br><br>
+    <!--Text Part Start-->
+    <center>
+        <h2>Upload your video here:</h2>
+        <br><br>
+        <i class="far fa-upload" style="font-size: 100px;"></i>
+        <br><br><br>
+        <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Click here to upload video</a>
+    </center>
+    <br>
+    <!--Text Part End-->
 
     <!--footer-->
     <footer class="site-footer" id="contact">
@@ -233,13 +198,42 @@ https://templatemo.com/tm-538-digital-trend
         </div>
     </div>
 
-
     <!-- SCRIPTS -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/aos.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/smoothscroll.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+
+    <script src="{% static 'js/p5.min.js' %}"></script>
+    <script src="{% static 'js/vanta.topology.min.js' %}"></script>
+    <script src="{% static 'js/team.js' %}"></script>
+    <script src="{% static 'js/newsletter.js' %}"></script>
+    <script src="{% static 'js/play-pause.js' %}"></script>
+    <script>
+        VANTA.TOPOLOGY({
+            el: "#bg-animation",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00
+        })
+    </script>
+    <script src="{% static 'js/zenith.js' %}"></script>
+    <script>
+        $('#default').zenith({
+            layout: 'default',
+            slideSpeed: 450,
+            autoplaySpeed: 2000
+        });
+    </script>
+
 
 </body>
 

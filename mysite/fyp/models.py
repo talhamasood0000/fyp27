@@ -3,6 +3,12 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
 from django.template.defaultfilters import slugify
 
+class Newsletter(models.Model):
+    email = models.EmailField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.email
+
 class VideoOutput(models.Model):
     video=models.ForeignKey('Video', on_delete=models.CASCADE)
     total_detected_card=models.IntegerField(default=0)

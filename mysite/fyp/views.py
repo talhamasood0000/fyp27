@@ -14,8 +14,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 
 
 from ml_model.new_approach import detect_video
-from .forms import RegisterForm, LoginForm,VideoForm
-from .models import Video,VideoOutput
+from .forms import RegisterForm, LoginForm,VideoForm, NewsletterForm
+from .models import Video,VideoOutput, Newsletter
 import json
 
 LOADED_MODEL = getattr(settings, "LOADED_MODEL", None) 
@@ -23,7 +23,15 @@ User=get_user_model()
 
 
 def index(request):
-    return render(request,'fyp/index.html')
+    if request.method== 'POST':
+        form=NewsletterForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form=NewsletterForm()
+    context={'form':form}
+    return render(request,'fyp/index.html',context)
 
 def team(request):
     return render(request,'fyp/team.html')

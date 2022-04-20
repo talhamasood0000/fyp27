@@ -24,7 +24,8 @@ https://templatemo.com/tm-538-digital-trend
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-pro-5.14.0/fontawesome-pro-5.14.0-web/css/all.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{% static 'css/templatemo-digital-trend.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -34,7 +35,7 @@ https://templatemo.com/tm-538-digital-trend
 <body>
 
     <!-- MENU BAR -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fal fa-eye-evil"></i> Zavirite
@@ -70,7 +71,27 @@ https://templatemo.com/tm-538-digital-trend
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
+    <div class="topnav" id="myTopnav">
+        <a href="{% url 'index' %}" class="main-tab"><i class="fal fa-eye-evil"></i> Zavirite</a>
+        <a href="{% url 'index' %}" class="sub-tab">Home</a>
+        <a href="{% url 'index' %}.#about" class="sub-tab">About</a>
+        <a href="{% url 'index' %}.#features" class="sub-tab">Services</a>
+        <a href="{% url 'index' %}.#contact" class="sub-tab">Contact</a>
+        <a href="{% url 'team' %}" class="sub-tab">Our Team</a>
+        <a href="{% url 'video_upload' %}" class="sub-tab">Get a demo</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" id="signup-btn">Logout</a>
+
+            <a href="#" id="profile-btn"><i class="fas fa-user"></i> Profile</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        {% else %}
+            <a href="{% url 'signup' %}" id="signup-btn">Sign Up/Login</a>
+        {% endif %}
+    </div>
 
     <!-- CONTACT -->
     <section class="contact section-padding">
@@ -88,25 +109,22 @@ https://templatemo.com/tm-538-digital-trend
                 <div class="col-lg-8 mx-auto col-md-10 col-12">
 
                     <!-- Follow https://templatemo.com/contact page to setup your own contact form -->
-
                     <form action="#" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-12">
-                                <input type="text" class="form-control" name="name" placeholder="Name">
-                            </div>
-
-                            <div class="col-12">
-                                <input type="email" class="form-control" name="email" placeholder="Email">
-                            </div>
-
-                            <div class="col-12">
-                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                <!-- <input type="email" class="form-control" name="email" placeholder="Email"> -->
+                                {{form.email}}
                             </div>
                             <div class="col-12">
-                                <input type="password" class="form-control" name="password" placeholder="Confirm Password">
-                                <center>Don't have an account click here to <a href="signup.html"><b>signup</b></a>.</center>
+                                <!-- <input type="password" class="form-control" name="password" placeholder="Password"> -->
+                                {{form.password}}
+                                <center>Don't have an account click here to <a href="{% url 'signup' %}"><b>signup</b></a>.</center>
                             </div>
                             <div class="col-lg-5 mx-auto col-7">
+                                {% if request.GET.next %}
+                                   <input type="hidden" name="next" value="{{request.GET.next}}">
+                                {% endif %}
                                 <button type="submit" class="form-control" id="submit-button" name="submit">Login!</button>
                             </div>
                         </div>

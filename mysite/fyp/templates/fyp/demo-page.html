@@ -24,7 +24,8 @@ https://templatemo.com/tm-538-digital-trend
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-pro-5.14.0/fontawesome-pro-5.14.0-web/css/all.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{% static 'css/templatemo-digital-trend.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -33,7 +34,7 @@ https://templatemo.com/tm-538-digital-trend
 <body>
 
     <!-- MENU BAR -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fal fa-eye-evil"></i> Zavirite
@@ -69,8 +70,27 @@ https://templatemo.com/tm-538-digital-trend
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
+    <div class="topnav" id="myTopnav">
+        <a href="{% url 'index' %}" class="main-tab"><i class="fal fa-eye-evil"></i> Zavirite</a>
+        <a href="{% url 'index' %}" class="sub-tab">Home</a>
+        <a href="{% url 'index' %}.#about" class="sub-tab">About</a>
+        <a href="{% url 'index' %}.#features" class="sub-tab">Services</a>
+        <a href="{% url 'index' %}.#contact" class="sub-tab">Contact</a>
+        <a href="{% url 'team' %}" class="sub-tab">Our Team</a>
+        <a href="{% url 'video_upload' %}" class="sub-tab">Get a demo</a>
 
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" id="signup-btn">Logout</a>
+
+            <a href="#" id="profile-btn"><i class="fas fa-user"></i> Profile</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        {% else %}
+            <a href="{% url 'signup' %}" id="signup-btn">Sign Up/Login</a>
+        {% endif %}
+    </div>
 
     <!-- PROJECT DETAIL -->
     <section class="project-detail section-padding-half">
@@ -89,7 +109,7 @@ https://templatemo.com/tm-538-digital-trend
     </section>
 
     <div class="full-image text-center" data-aos="zoom-in">
-        <img src="{% static 'images/project/project-detail/interview-process.jpg' %}" class="img-fluid" alt="interview process">
+        <img src="images/project/project-detail/interview-process.jpg" class="img-fluid" alt="interview process">
     </div>
 
     <!-- PROJECT DETAIL -->
@@ -99,7 +119,7 @@ https://templatemo.com/tm-538-digital-trend
 
                 <div class="col-lg-6 col-md-6 col-12 mb-5">
 
-                    <img src="{% static 'images/project/project-detail/personal-website.png' %}" class="img-fluid" alt="personal website" data-aos="fade-up">
+                    <img src="images/project/project-detail/personal-website.png" class="img-fluid" alt="personal website" data-aos="fade-up">
                 </div>
 
                 <div class="col-lg-5 col-md-6 mr-lg-auto mt-lg-5 col-12" data-aos="fade-up" data-aos-delay="200">
@@ -128,7 +148,7 @@ https://templatemo.com/tm-538-digital-trend
                     <h3>Curabitur egestas mollis tellus sit amet porttitor. Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus elementum, tempor risus vel.</h3>
 
                     <div class="d-flex align-items-center mt-3">
-                        <img src="{% static 'images/project/project-detail/male-avatar.png' %}" class="img-fluid" alt="male avatar">
+                        <img src="images/project/project-detail/male-avatar.png" class="img-fluid" alt="male avatar">
 
                         <p>Angelo Sharp, Creative Director</p>
                     </div>
