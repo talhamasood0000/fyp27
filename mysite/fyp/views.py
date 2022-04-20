@@ -15,7 +15,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 
 from ml_model.new_approach import detect_video
 from .forms import RegisterForm, LoginForm,VideoForm, NewsletterForm
-from .models import Video,VideoOutput, Newsletter
+from .models import Video,VideoOutput
 import json
 
 LOADED_MODEL = getattr(settings, "LOADED_MODEL", None) 
@@ -30,7 +30,7 @@ def index(request):
             return redirect('/')
     else:
         form=NewsletterForm()
-    context={'form':form}
+    context={'form':form}   
     return render(request,'fyp/index.html',context)
 
 def team(request):
@@ -77,14 +77,16 @@ def signup_page(request):
 
 @login_required(login_url='/login/')
 def video_upload(request):
-    form= VideoForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        obj=form.save(commit=False)
-        obj.user=User.objects.get(pk=request.user.id)
-        print(obj.user)
-        obj.save()
-
-        return redirect('/all_videos/')
+    if request.method=='POST':
+        form= VideoForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            obj=form.save(commit=False)
+            obj.user=User.objects.get(pk=request.user.id)
+            print(obj.user)
+            obj.save()
+            return redirect('/all_videos/')
+    else:
+        form=VideoForm()           
     context={'form':form}
     return render(request, 'fyp/video-upload.html', context)
 

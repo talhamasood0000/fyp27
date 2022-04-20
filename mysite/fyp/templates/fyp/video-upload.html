@@ -24,7 +24,7 @@ https://templatemo.com/tm-538-digital-trend
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" type="{% static 'text/css" href="{% static 'fontawesome-pro-5.14.0/fontawesome-pro-5.14.0-web/css/all.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-pro-5.14.0/fontawesome-pro-5.14.0-web/css/all.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- MAIN CSS -->
@@ -120,6 +120,11 @@ https://templatemo.com/tm-538-digital-trend
         <br><br>
         <i class="far fa-upload" style="font-size: 100px;"></i>
         <br><br><br>
+        <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
+            {{ form.videofile }}
+            <input type="submit" value="Upload"/>
+        </form>
         <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Click here to upload video</a>
     </center>
     <br>
