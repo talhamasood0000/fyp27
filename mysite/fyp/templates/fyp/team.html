@@ -104,7 +104,7 @@ https://templatemo.com/tm-538-digital-trend
         </div>
         <div class="container container-1">
             <center>
-                <img src="images/talha.jpg" alt="Nature" class="responsive">
+                <img src="{% static 'images/talha.jpg' %}" alt="Nature" class="responsive">
                 <p>A quite diligent person with commendable expertise in documentation, Talha has high aims for future. Being a friendly person he is always there to extend his help towards others.</p>
                 <h4>Talha Masood</h4>
                 <a href="https://www.facebook.com/aun.muhammad.1466" target="blank" class="social-margins">
@@ -128,7 +128,7 @@ https://templatemo.com/tm-538-digital-trend
         </div>
         <div class="container container-2">
             <center>
-                <img src="images/afifa.jpg" alt="Nature" class="responsive">
+                <img src="{% static 'images/afifa.jpg' %}" alt="Nature" class="responsive">
                 <p>A quite diligent person with commendable expertise in documentation, Afifa has high aims for future. Being a friendly person he is always there to extend his help towards others.</p>
                 <h4>afifa Khan</h4>
                 <a href="https://www.facebook.com/aun.muhammad.1466" target="blank" class="social-margins">
@@ -152,7 +152,7 @@ https://templatemo.com/tm-538-digital-trend
         </div>
         <div class="container container-3">
             <center>
-                <img src="images/uzair.jpg" alt="Nature" class="responsive">
+                <img src="{% static 'images/uzair.jpg' %}" alt="Nature" class="responsive">
                 <p>A quite diligent person with commendable expertise in documentation, Uzair has high aims for future. Being a friendly person he is always there to extend his help towards others.</p>
                 <h4>Uzair Mansoor</h4>
                 <a href="https://www.facebook.com/aun.muhammad.1466" target="blank" class="social-margins">
@@ -176,7 +176,7 @@ https://templatemo.com/tm-538-digital-trend
         </div>
         <div class="container container-4">
             <center>
-                <img src="images/amna.jpg" alt="Nature" class="responsive">
+                <img src="{% static 'images/amna.jpg' %}" alt="Nature" class="responsive">
                 <p>A quite diligent person with commendable expertise in documentation, she has high aims for future. Being a friendly person he is always there to extend his help towards others.</p>
                 <h4>Amna Mir</h4>
                 <a href="https://www.facebook.com/aun.muhammad.1466" target="blank" class="social-margins">
@@ -220,19 +220,19 @@ https://templatemo.com/tm-538-digital-trend
                 <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up">
                     <h4 class="my-4">Main Menu</h4>
                     <p class="mb-1">
-                        <a href="#">
+                        <a href=" {% url 'index' %}">
                             <i class="fas fa-home-lg-alt mr-2 footer-icon"></i> Home
                         </a>
                         <br>
-                        <a href="#">
+                        <a href="{% url 'team' %}">
                             <i class="fad fa-user-friends mr-2 footer-icon"></i> Our Team
                         </a>
                         <br>
-                        <a href="#">
+                        <a href="{% url 'index' %}.#about">
                             <i class="fas fa-scroll-old mr-2 footer-icon"></i> About us
                         </a>
                         <br>
-                        <a href="#">
+                        <a href="{% url 'video_upload' %}">
                             <i class="fad fa-desktop mr-2 footer-icon"></i> Get a demo
                         </a>
                     </p>
