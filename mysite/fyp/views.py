@@ -94,7 +94,7 @@ def video_upload(request):
 def all_videos(request):
     current_user = request.user
     videos=Video.objects.filter(user=current_user).order_by('-id')
-    return render(request,'fyp/all-videos.html',{'videos':videos})
+    return render(request,'fyp/videos-page.html',{'videos':videos})
 
 @login_required(login_url='/login/')
 def redirect_page(request, slug):

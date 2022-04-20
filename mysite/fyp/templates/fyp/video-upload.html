@@ -103,7 +103,7 @@ https://templatemo.com/tm-538-digital-trend
                     <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
                         <div class="hero-text">
                             <h1 class="text-white">
-                                Report
+                                Video Upload
                             </h1>
                         </div>
                     </div>
@@ -120,12 +120,12 @@ https://templatemo.com/tm-538-digital-trend
         <br><br>
         <i class="far fa-upload" style="font-size: 100px;"></i>
         <br><br><br>
-        <form enctype="multipart/form-data" method="POST" action="">
+        <form enctype="multipart/form-data" method="POST" action="" >
             {% csrf_token %}
-            {{ form.videofile }}
-            <input type="submit" value="Upload"/>
+            {{ form }}
+            <button type="submit" class="form-control" id="submit-button" name="submit">Done!</button>
         </form>
-        <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Click here to upload video</a>
+
     </center>
     <br>
     <!--Text Part End-->

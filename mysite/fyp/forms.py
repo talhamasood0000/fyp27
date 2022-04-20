@@ -17,9 +17,9 @@ class VideoForm(forms.ModelForm):
     class Meta:
         model= Video
         fields= ['videofile']
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['videofile'].widget.attrs.update({'name':'videofile','placeholder':'Video File','type':'file'})
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['videofile'].widget.attrs.update({'name':'videofile','placeholder':'Video File','type':'file'})
 
 class VideoOutputForm(forms.ModelForm):
     class Meta:
