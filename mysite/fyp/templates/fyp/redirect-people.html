@@ -32,7 +32,7 @@ https://templatemo.com/tm-538-digital-trend
     <link rel="stylesheet" href="{% static 'css/flickity.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/chapters_members.css' %}">
     <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
-    <link rel="stylesheet" href="{% static 'css/video.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/video.css' %}">
 </head>
 
 <body>
@@ -102,14 +102,9 @@ https://templatemo.com/tm-538-digital-trend
                 <div class="row">
                     <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
                         <div class="hero-text">
-                            {% if user.is_authenticated %}
                             <h1 class="text-white">
-                                Welcome <span>{{user.username}}</span>!
+                                Redirect
                             </h1>
-                            {% else %}
-                            <h1 class="text-white">
-                                Welcome to <span>Zavirite</span>!
-                            {% endif %}
                         </div>
                     </div>
                     <div class="col-lg-6 col-12"></div>
@@ -118,36 +113,15 @@ https://templatemo.com/tm-538-digital-trend
         </section>
     </header>
     <!-- HERO -->
-    <br><br>
-    {% for video in videos %}
-    <!--Video Part Start-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="video-overlay">
-                    <video class="mob-clip" muted>
-                        <source src="{{video.videofile.url}}" type="video/mp4" />
-                    </video>
-                    <div class="playpause"></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <center>
-                    <br>
-                    <h6>Video Name: {{ video.videofile.name }}</h6>
-                    <br>
-
-                    <br>
-                    <a href="{% url 'redirect_page' video.slug %}" class="btn btn-primary btn-lg active" role="button" id="video-btn" aria-pressed="true">Vehicle Detection</a>
-                    <a href="{% url 'redirect_people' video.slug %}" class="btn btn-secondary btn-lg active" role="button" id="video-btn" aria-pressed="true">People Detection</a>
-                </center>
-            </div>
-        </div>
-    </div>
     <br>
-    <!--Video Part End-->
-    {% endfor %}
-    
+
+    Your Video is ready to be viewed.
+    <br>
+    Click <a href="{% url 'people' video.slug %}">this</a> link.
+
+    <br>
+    <!--Text Part End-->
+
     <!--footer-->
     <footer class="site-footer" id="contact">
         <div class="container">
@@ -155,19 +129,19 @@ https://templatemo.com/tm-538-digital-trend
                 <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up">
                     <h4 class="my-4">Main Menu</h4>
                     <p class="mb-1">
-                        <a href=" {% url 'index' %}">
+                        <a href="#">
                             <i class="fas fa-home-lg-alt mr-2 footer-icon"></i> Home
                         </a>
                         <br>
-                        <a href="{% url 'team' %}">
+                        <a href="#">
                             <i class="fad fa-user-friends mr-2 footer-icon"></i> Our Team
                         </a>
                         <br>
-                        <a href="{% url 'index' %}.#about">
+                        <a href="#">
                             <i class="fas fa-scroll-old mr-2 footer-icon"></i> About us
                         </a>
                         <br>
-                        <a href="{% url 'video_upload' %}">
+                        <a href="#">
                             <i class="fad fa-desktop mr-2 footer-icon"></i> Get a demo
                         </a>
                     </p>

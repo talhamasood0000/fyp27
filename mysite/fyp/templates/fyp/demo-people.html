@@ -99,7 +99,6 @@ https://templatemo.com/tm-538-digital-trend
         <a href="{% url 'index' %}.#contact" class="sub-tab">Contact</a>
         <a href="{% url 'team' %}" class="sub-tab">Our Team</a>
         <a href="{% url 'video_upload' %}" class="sub-tab">Get a demo</a>
-
         {% if user.is_authenticated %}
             <a href="{% url 'logout' %}" id="signup-btn">Logout</a>
 
@@ -121,7 +120,7 @@ https://templatemo.com/tm-538-digital-trend
             <a class="nav-link" href="#">Homepage</a>
         </li>
         <li class="nav-item" onclick="openTab2()">
-            <a class="nav-link" href="#">Vehicle Entering</a>
+            <a class="nav-link" href="#">People Entering</a>
         </li>
         <li class="nav-item" onclick="openTab3()">
             <a class="nav-link" href="#">No of Labour</a>
@@ -138,8 +137,8 @@ https://templatemo.com/tm-538-digital-trend
     <div class="topnav" id="myTopnav">
         <a href="index.html" class="active"><i class="fal fa-eye-evil"></i> Zavirite</a>
         <a href="index.html">Home</a>
-        <a href="#" onclick="openTab1()">No. of Vehicles</a>
-        <a href="vehicles.html">Vehicles Entering</a>
+        <a href="#" onclick="openTab1()">No. of Peoples</a>
+        <a href="Peoples.html">Peoples Entering</a>
         <a href="#" onclick="openTab3()">Download Report</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
@@ -160,10 +159,10 @@ https://templatemo.com/tm-538-digital-trend
             <h1><a href="demo.html" class="logo">Dashboard</a></h1>
             <ul class="list-unstyled components mb-5">
                 <li class="nav-tab1" onclick="openTab1()">
-                    <a href="#"><span class="fa fa-home mr-3"></span> No of Vehicles</a>
+                    <a href="#"><span class="fa fa-home mr-3"></span> No of Peoples</a>
                 </li>
                 <li class="nav-tab2">
-                    <a href="vehicles.html"><i class="fal fa-car-bus"></i> Vehicle Entering</a>
+                    <a href="Peoples.html"><i class="fal fa-car-bus"></i> People Entering</a>
                 </li>
                 <li class="nav-tab3" onclick="openTab3()">
                     <a href="#"><span class="fa fa-sticky-note mr-3"></span> Download Report</a>
@@ -182,14 +181,14 @@ https://templatemo.com/tm-538-digital-trend
                     aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div> -->
             <div id="tab1">
-                <h2 class="mb-4">No of Vehicles</h2>
+                <h2 class="mb-4">No of Peoples</h2>
                 <div class="container">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
 
             <div id="tab2">
-                <h2 class="mb-4">Vehicles Entering</h2>
+                <h2 class="mb-4">Peopless Entering</h2>
                 <div class="container">
                     <canvas id="myChart"></canvas>
                 </div>
@@ -301,7 +300,7 @@ https://templatemo.com/tm-538-digital-trend
                 labels: {{time_detected|safe}},
                 datasets: [{
                     label: 'Time',
-                    data: {{car_detected|safe}},
+                    data: {{people_detected|safe}},
                     //backgroundColor: 'green'
                     backgroundColor: [
                         'rgba(137, 150, 78, 0.6)',

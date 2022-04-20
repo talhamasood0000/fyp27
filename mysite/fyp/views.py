@@ -14,6 +14,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 
 
 from ml_model.new_approach import detect_video
+from ml_model.people_aproach import detect_people
 from .forms import RegisterForm, LoginForm,VideoForm, NewsletterForm
 from .models import Video,VideoOutput
 import json
@@ -116,6 +117,27 @@ def demo(request,slug):
     time_detected=[item.detected_time for item in all_items]
     context={"car_detected":json.dumps(car_detected),"time_detected":json.dumps(time_detected)}
     return render(request,'fyp/demo.html',context)
+
+@login_required(login_url='/login/')
+def people(request,slug):
+    video=get_object_or_404(Video, slug=slug)
+    all_items=VideoOutput.objects.filter(video=video)
+    car_detected=[item.total_detected_card for item in all_items]
+    time_detected=[item.detected_time for item in all_items]
+    context={"people_detected":json.dumps(car_detected),"time_detected":json.dumps(time_detected)}
+    return render(request,'fyp/demo-people.html',context)
+
+@login_required(login_url='/login/')
+def redirect_people(request, slug):
+    video=get_object_or_404(Video, slug=slug)
+    # video=Video.objects.get(slug=slug)
+    if video.result:
+        return render(request,'fyp/redirect-people.html',{'video':video})
+    else:
+        detect_people(video)
+        video.result=True
+        video.save()
+        return render(request,'fyp/redirect-people.html',{'video':video}) 
 
 @login_required(login_url='/login/')
 def generate_report(request):

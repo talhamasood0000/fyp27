@@ -14,6 +14,8 @@ urlpatterns = [
     path('redirect-page/<slug:slug>/',views.redirect_page,name='redirect_page'),
     path('generate_report/',views.generate_report,name='generate_report'),
     path('<slug:slug>/',views.demo,name='demo'),
+    path('<slug:slug>/',views.people,name='people'),
+    path('redirect-people/<slug:slug>/',views.redirect_people,name='redirect_people'),
     
 
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
