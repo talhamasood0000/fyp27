@@ -1,7 +1,6 @@
 import cv2
 import math
 
-from pickle import FALSE
 import mediapipe as mp
 import time
 
@@ -46,7 +45,7 @@ class FaceDetector():
 def detect_people(video):
     # VIDEO_PATH=r'C:\Users\Talha Masood\Downloads\check1.mp4'
     VIDEO_PATH='media/'+video.videofile.name
-    TIME_IN_FPS=25*60*1
+    TIME_IN_FPS=25*60*5
     cap = cv2.VideoCapture(VIDEO_PATH)
     detector = FaceDetector()
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -58,7 +57,7 @@ def detect_people(video):
         ret, frame = cap.read()
         if ret:
             # cv2.imshow("Image", frame)
-            img_with_detections, bboxs, c = detector.findFaces(frame, FALSE)
+            img_with_detections, bboxs, c = detector.findFaces(frame, False)
         
             output_time_sec=frameNumber/fps
             output_time_sec=output_time_sec % (24 * 3600)

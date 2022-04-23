@@ -8,7 +8,7 @@ from django.core.files.base import ContentFile
 def detect_video(video,detect_fn):
     VIDEO_PATH='media/'+video.videofile.name
     MIN_CONF_THRESH = float(0.95)
-    TIME_IN_FPS=25*60*5
+    TIME_IN_FPS=25*60*2
 
     cap = cv2.VideoCapture(VIDEO_PATH)
     width = cap. get(cv2. CAP_PROP_FRAME_WIDTH )

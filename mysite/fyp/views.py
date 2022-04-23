@@ -5,7 +5,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import FileResponse
+from django.core.files.storage import FileSystemStorage
 import io
+
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
@@ -159,7 +161,8 @@ def generate_report(request):
     x,y=1,650
     m_x=400
 # image
-    c.drawImage("logo.JPG",x,y)
+
+    c.drawImage('/images/logo.JPG',x,y)
 
 
 # drawString(x-cor,y-cord,"Text")
@@ -197,9 +200,9 @@ def generate_report(request):
     c.drawString(new_x,new_y+5,"Report To")
 
     c.setFillColorRGB(0,0,0)
-    c.drawString(new_x+4,new_y-16,"User Name")
-    c.drawString(new_x+4,new_y-32,"Phone Number")
-    c.drawString(new_x+4,new_y-48,"Email")
+    c.drawString(new_x+4,new_y-16,str(request.user.username))
+    c.drawString(new_x+4,new_y-32,str(request.user.phonenumber))
+    c.drawString(new_x+4,new_y-48,str(request.user.email))
 
     c.setStrokeColorRGB(40/256, 167/256, 69/256)
     c.line(new_x-3,new_y-60,7*inch,new_y-60)

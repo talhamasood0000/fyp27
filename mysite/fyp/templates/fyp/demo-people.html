@@ -297,10 +297,10 @@ https://templatemo.com/tm-538-digital-trend
         let massPopChart = new Chart(myChart, {
             type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
             data: {
-                labels: {{time_detected|safe}},
+                labels:['06:00','12:00','18:00','24:00','30:00','36:00'], //{{time_detected|safe}},
                 datasets: [{
-                    label: 'Time',
-                    data: {{people_detected|safe}},
+                    label: [0,4,6,3,5,2] 'Time',
+                    data: //{{people_detected|safe}},
                     //backgroundColor: 'green'
                     backgroundColor: [
                         'rgba(137, 150, 78, 0.6)',

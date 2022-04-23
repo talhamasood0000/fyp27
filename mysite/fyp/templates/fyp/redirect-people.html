@@ -33,6 +33,21 @@ https://templatemo.com/tm-538-digital-trend
     <link rel="stylesheet" href="{% static 'css/chapters_members.css' %}">
     <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
     <link rel="stylesheet" href="{% static 'css/video.css' %}">
+    <style>
+        .link-click {
+            font-size: 30px;
+        }
+        
+        .link-click a {
+            color: #89964e;
+            text-decoration: underline;
+        }
+        
+        .link-click a:hover {
+            color: #002222;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -112,16 +127,17 @@ https://templatemo.com/tm-538-digital-trend
             </div>
         </section>
     </header>
+    <br><br>
+    <!--Text Part Start-->
+    <center>
+        <div class="link-click">
+            The Results are Ready! <br>
+            Click <a href="{% url 'people' video.slug %}">this</a> link.
+        </div>
+    </center>
+    <br><br>
     <!-- HERO -->
-    <br>
-
-    Your Video is ready to be viewed.
-    <br>
-    Click <a href="{% url 'people' video.slug %}">this</a> link.
-
-    <br>
-    <!--Text Part End-->
-
+    
     <!--footer-->
     <footer class="site-footer" id="contact">
         <div class="container">

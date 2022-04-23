@@ -157,7 +157,7 @@ https://templatemo.com/tm-538-digital-trend
         <span class="sr-only">Toggle Menu</span>
       </button>
             </div>
-            <h1><a href="demo.html" class="logo">Dashboard</a></h1>
+            <h1><a href="{% url 'index' %}" class="logo">Dashboard</a></h1>
             <ul class="list-unstyled components mb-5">
                 <li class="nav-tab1" onclick="openTab1()">
                     <a href="#"><span class="fa fa-home mr-3"></span> No of Vehicles</a>
@@ -166,7 +166,7 @@ https://templatemo.com/tm-538-digital-trend
                     <a href="vehicles.html"><i class="fal fa-car-bus"></i> Vehicle Entering</a>
                 </li>
                 <li class="nav-tab3" onclick="openTab3()">
-                    <a href="#"><span class="fa fa-sticky-note mr-3"></span> Download Report</a>
+                    <a href="{% url 'generate_report' %}"><span class="fa fa-sticky-note mr-3"></span> Download Report</a>
                 </li>
             </ul>
 
@@ -201,7 +201,7 @@ https://templatemo.com/tm-538-digital-trend
                     <br><br><br><br><br>
                     <i class="fal fa-download" style="font-size: 100px;"></i>
                     <br><br>
-                    <a href="next-page.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Download Weekly Report From Here!</a>
+                    <a href="{% url 'generate_report' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Download Weekly Report From Here!</a>
                 </center>
             </div>
 
@@ -298,10 +298,10 @@ https://templatemo.com/tm-538-digital-trend
         let massPopChart = new Chart(myChart, {
             type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
             data: {
-                labels: {{time_detected|safe}},
+                labels:['05:00','10:00','15:00','20:00','25:00','30:00','35:00','40:00','45:00'], //{{time_detected|safe}},
                 datasets: [{
                     label: 'Time',
-                    data: {{car_detected|safe}},
+                    data:[0,0,2,0,0,1,0,0,2], //{{car_detected|safe}},
                     //backgroundColor: 'green'
                     backgroundColor: [
                         'rgba(137, 150, 78, 0.6)',
