@@ -104,7 +104,6 @@ def all_videos(request):
 @login_required(login_url='/login/')
 def redirect_page(request, slug):
     video=get_object_or_404(Video, slug=slug)
-    # video=Video.objects.get(slug=slug)
     if video.result:
         return render(request,'fyp/redirect.html',{'video':video})
     else:
@@ -160,7 +159,7 @@ def generate_report(request):
     x,y=1,650
     m_x=400
 # image
-    logo=ImageReader(r'C:\Users\Talha Masood\Documents\GitHub\fyp27\mysite\static\images\logo.JPG')
+    logo=ImageReader('static/images/logo.JPG')
     c.drawImage(logo,x,y)
 
 
@@ -258,12 +257,12 @@ def generate_report(request):
     row_x1,rowx2,rowx3,row_y=new_x+28,142,316,new_y-116
     c.setFillColorRGB(0/256,0/256,0/256)
 
-    for i in range(0,3):
+    for i in range(0,10):
         row_y=row_y-15
 
         c.drawString(row_x1,row_y,str(i))
         c.drawString(rowx2,row_y,str(i*2))
-        c.drawString(rowx3,row_y,"Time of Detection")
+        c.drawString(rowx3,row_y,str("00:12:"+str(i)))
 
     c.showPage()
     c.save()
