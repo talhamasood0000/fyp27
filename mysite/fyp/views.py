@@ -13,7 +13,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib.styles import getSampleStyleSheet
-
+from reportlab.lib.utils import ImageReader
+from datetime import date,datetime
 
 from ml_model.new_approach import detect_video
 from ml_model.people_aproach import detect_people
@@ -24,6 +25,7 @@ import json
 LOADED_MODEL = getattr(settings, "LOADED_MODEL", None) 
 User=get_user_model()
 
+today = date.today()
 
 def index(request):
     if request.method== 'POST':
@@ -141,14 +143,11 @@ def redirect_people(request, slug):
         video.save()
         return render(request,'fyp/redirect-people.html',{'video':video}) 
 
-@login_required(login_url='/login/')
+# @login_required(login_url='/login/')
 def generate_report(request):
-
+# http://127.0.0.1:8000/generate_report
     buf=io.BytesIO()
-
-    PATH=r'C:\Users\Talha Masood\Desktop\Report\check.pdf'
-
-    c=canvas.Canvas(PATH,pagesize=letter)
+    c=canvas.Canvas(buf,pagesize=letter)
 
 #  added one inch margin from all sides
     c.translate(0.75*inch, 0.75*inch)
@@ -161,8 +160,8 @@ def generate_report(request):
     x,y=1,650
     m_x=400
 # image
-
-    c.drawImage('/images/logo.JPG',x,y)
+    logo=ImageReader(r'C:\Users\Talha Masood\Documents\GitHub\fyp27\mysite\static\images\logo.JPG')
+    c.drawImage(logo,x,y)
 
 
 # drawString(x-cor,y-cord,"Text")
@@ -174,18 +173,18 @@ def generate_report(request):
     c.drawString(x,y-50,"University of Engineering and Technology")
     c.drawString(x,y-70,"Lahore, Pakistan")
     c.drawString(x,y-90,"Phone: +92-42-36-955-955")
-    c.drawString(x,y-110,"Email:talhamasood0000@gmail.com")
+    c.drawString(x,y-110,"Email: contact@zavitite.com")
     c.drawString(x,y-130,"Website: zavirite.com")
 
 # First Left Info Section
     c.drawRightString(m_x,y-50,"Date:")
-    c.drawString(m_x+10,y-50,"April 17,2022")
+    c.drawString(m_x+10,y-50,str(today.strftime("%B %d, %Y")))
 
     c.drawRightString(400,y-70,"Time:")
-    c.drawString(m_x+10,y-70,"12:00:00")
+    c.drawString(m_x+10,y-70,str(datetime.now().strftime('%H:%M:%S')))
 
     c.drawRightString(m_x+40,y-90,"Report No.:")
-    c.drawString(m_x+50,y-90,"1234")
+    c.drawString(m_x+50,y-90,"2358")
 
 
     c.line(x,y-140,7*inch,y-140)
@@ -200,9 +199,23 @@ def generate_report(request):
     c.drawString(new_x,new_y+5,"Report To")
 
     c.setFillColorRGB(0,0,0)
-    c.drawString(new_x+4,new_y-16,str(request.user.username))
-    c.drawString(new_x+4,new_y-32,str(request.user.phonenumber))
-    c.drawString(new_x+4,new_y-48,str(request.user.email))
+
+
+    c.setFont("Helvetica-Bold",12)
+    c.drawString(new_x+4,new_y-16,"Name:")
+    c.setFont("Helvetica",12)
+    c.drawString(new_x+45,new_y-16,str(request.user.username))
+
+    c.setFont("Helvetica-Bold",12)
+    c.drawString(new_x+4,new_y-32,"Phone:")
+    c.setFont("Helvetica",12)
+    c.drawString(new_x+50,new_y-32,str(request.user.phonenumber))
+
+    c.setFont("Helvetica-Bold",12)
+    c.drawString(new_x+4,new_y-48,"Email")
+    c.setFont("Helvetica",12)
+    c.drawString(new_x+45,new_y-48,str(request.user.email))
+    c.setFont("Helvetica",15)
 
     c.setStrokeColorRGB(40/256, 167/256, 69/256)
     c.line(new_x-3,new_y-60,7*inch,new_y-60)
@@ -252,7 +265,8 @@ def generate_report(request):
         c.drawString(rowx2,row_y,str(i*2))
         c.drawString(rowx3,row_y,"Time of Detection")
 
-
+    c.showPage()
+    c.save()
     buf.seek(0)
     return FileResponse(buf, as_attachment=True, filename='report.pdf')
      
